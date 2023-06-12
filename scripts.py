@@ -34,11 +34,9 @@ def find_schoolkid(child):
     try:
         return Schoolkid.objects.get(full_name__contains=child)
     except Schoolkid.MultipleObjectsReturned:
-        print(f"Найдено несколько учеников с именем {child}.", file=sys.stderr)
-        exit()
+        exit(f"Найдено несколько учеников с именем {child}.")
     except Schoolkid.DoesNotExist:
-        print(f"Ученик {child} не найден.", file=sys.stderr)
-        exit()
+        exit(f"Ученик {child} не найден.")
 
 
 def fix_marks(child):
@@ -66,5 +64,4 @@ def create_commendation(child, subject):
 
         print(f"Похвала добавлена от учителя {latest_lesson.teacher}.")
     except Lesson.DoesNotExist:
-        print(f"Предмет {subject} не найден.", file=sys.stderr)
-        exit()
+        exit(f"Предмет {subject} не найден.")
